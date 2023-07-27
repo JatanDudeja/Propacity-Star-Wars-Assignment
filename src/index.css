@@ -5,9 +5,264 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #03123D;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.header-container{
+  display: flex;
+  /* width: 100vw; */
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background: #03123D;
+}
+
+
+.search{
+  display: flex;
+width: 216px;
+height: 32px;
+/* padding: 4px 8px; */
+align-items: center;
+gap: 8px;
+border-radius: 4px;
+border: 1px solid var(--white-1, #FFF);
+background: rgba(255, 255, 255, 0.00);
+color: white;
+  background-image: url('./assets/search-icon.svg');
+    background-repeat: no-repeat;
+    text-indent: 20px;
+}
+
+
+
+/* Nav Bar */
+
+
+
+
+
+.sidebar-container{
+  display: inline-flex;
+height: 91vh;
+width: 20%;
+flex-direction: column;
+align-items: flex-start;
+flex-shrink: 0;
+background: #03123B;
+}
+
+
+.sidebar-nav{
+  display: flex;
+  /* width: 10%; */
+  height: 576px;
+  padding: 10px 14px 10px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar-nav > a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+
+
+
+
+
+/* Pages */
+
+/* Films */
+
+.container-outer{
+  height: 50px;
+  width: 220px;
+  display: flex;
+  padding-right: 14px;
+
+  align-items:center;
+  justify-content: space-between;
+  border-radius: 6px;
+}
+
+.container-outer:hover{
+  height: 50px;
+  display: flex;
+  width: 220px;
+  padding-right: 14px;
+  /* width: 71%; */
+  align-items:center;
+  justify-content: space-between;
+  background-color: coral;
+  border-radius: 6px;
+}
+
+.container-inner{
+  display: flex;
+  padding: 8px 12px;
+  /* width: inherit; */
+  align-items: center;
+  gap: 4px;
+  flex: 1 0 0;
+}
+
+
+.container-inner > span {
+  color: var(--white-1, #FFF);
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* width: 71%; */
+  /* Heading/Med */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.5px;
+}
+
+
+
+/* Home Page */
+
+
+.home-container{
+  background: #03123D;
+  position: absolute;
+  top: 12%;
+  left: 20%;
+  height: 80%;
+  width: 80%;
+  /* background-color: bisque; */
+}
+
+.home-inner-upper-container{
+  position: absolute;
+  /* top: 20%; */
+  left: 10%;
+  display: flex;
+  width: 695px;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: 12px;
+  border: 2px solid #E0E6ED;
+  background: #FFF;
+  box-shadow: 0px 7px 34px 0px rgba(23, 23, 37, 0.25);
+
+}
+
+.home-page-image{
+  width: 100%;
+  height: 218px; 
+}
+
+
+
+/* Films container */
+
+
+.films-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 12px;
+}
+
+
+.film-container{
+  width: 99%;
+  color: white;
+  margin-bottom: 15px;
+}
+
+
+.film-poster{
+  
+  border-radius: 8px;
+  background: var(--white-2, #FAFAFB);
+  height: 200px;
+  align-self: stretch;
+  margin-bottom: 7px;
+}
+
+
+.film-name{
+  display: flex;
+  padding: 12px 12px 12px 16px;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(249, 250, 253, 0.20);
+}
+
+.reel-icon{
+  margin-right: 12px;
+}
+
+.options-icon{
+  display: flex;
+  padding: 4px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 6px;
+  background: rgba(249, 250, 253, 0.20);
+}
+
+.films{
+  color: white;
+  font-size: 20px;
+  margin: 0px;
+  margin-bottom: 22px;
+}
+
+.film-heading-toggle{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.film-button{
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  display: inline;
+}
+
+.film-button::selection{
+  background-color: transparent;
+  border: 1px solid white;
+  background-color: white;
+  color: grey;
+  display: inline;
+}
+
+.grid{
+  display:flex;
+  align-items: center;
+
+  justify-content: center;
+  border-top-left-radius: 2px;
+  border-end-start-radius: 2px;
+}
+
+.list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.grid-buttons{
+  margin-right: 25px;
 }
