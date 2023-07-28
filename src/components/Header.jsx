@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import starWarsLogo from '../assets/star-wars-logo.svg'
+import { useGlobalContext } from '../Context'
 
 
 export default function Header(){
 
     const [search, setSearch] = React.useState("")
+
+    const {showSearch, tellPage} = useGlobalContext()
 
     function setSearchFunction(e){
         console.log(e.target.value)
@@ -14,11 +17,11 @@ export default function Header(){
 
     return(
         <header className='header-container'>
-            <Link  to='/'><img src={starWarsLogo} alt='star-wars-logo'/></Link>
+            <Link  to='/'><img src={starWarsLogo} alt='star-wars-logo' onClick={() => tellPage('home')}/></Link>
             {/* <input  */}
-            <form>
+            {showSearch && <form>
                 <input className='search' type='text' placeholder='Search' value={search} onChange={setSearchFunction}/>
-            </form>
+            </form>}
         </header>
     )
 }

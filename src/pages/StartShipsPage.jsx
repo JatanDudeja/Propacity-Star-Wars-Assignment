@@ -1,25 +1,23 @@
 import React from 'react'
 import { useGlobalContext } from '../Context'
+import ListView from './Starship/Views/ListView'
+import GridView from './Starship/Views/GridView'
 
 export default function StartShipsPage(){
-    const {starShipsData} = useGlobalContext()
+    const { starShipsData, filmGrid, gridSetter } = useGlobalContext()
+
     // console.log(filmsData);
     
-    return(
-        <div className='home-container'>
-            <div className='home-inner-upper-container'>
-                
-                {
-                    starShipsData.length > 0 && starShipsData.map((item) => {
-                        return(
-                            <div>
-                                {item.name}
-                            </div>
-                        )
-                    })
-                }
+    if (!filmGrid) {
+        return (
+            <GridView />
+                            
+        )
+    }
 
-            </div>
-        </div>
-    )
+
+    else{
+        return(<ListView />)
+    }
+
 }

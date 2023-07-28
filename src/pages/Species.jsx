@@ -6,9 +6,10 @@ import { useGlobalContext } from '../Context'
 
 
 export default function Species(){
-    const {link} = useGlobalContext()
+    const { tellPage } = useGlobalContext()
+
     return(
-        <div className='container-outer'>
+        <div className='container-outer' onClick={() => tellPage('species')}>
             <div className='container-inner'>
                 <img src={folderIcon} alt='films-icon' />
                 <span>Species</span>

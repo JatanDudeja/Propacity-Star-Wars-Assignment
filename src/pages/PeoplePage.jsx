@@ -1,24 +1,23 @@
 import React from 'react'
 import { useGlobalContext } from '../Context'
+import GridView from './Peoples/Views/GridView'
+import ListView from './Peoples/Views/ListView'
 
 
 export default function PeoplePage(){
-    const {peopleData} = useGlobalContext()
-    return(
-        <div className='home-container'>
-            <div className='home-inner-upper-container'>
-                
-                {
-                    peopleData.length > 0 && peopleData.map((item) => {
-                        return(
-                            <div>
-                                {item.name}
-                            </div>
-                        )
-                    })
-                }
+    const { peopleData, filmGrid, gridSetter } = useGlobalContext()
 
-            </div>
-        </div>
-    )
+    
+    if(!filmGrid){
+        return(
+            <GridView />
+            // <div>Hi</div>
+        )
+    }
+
+    else{
+        return(
+            <ListView />
+        )
+    }
 }

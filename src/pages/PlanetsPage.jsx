@@ -1,23 +1,23 @@
 import React from "react"
 import { useGlobalContext } from "../Context"
+import GridView from "./Planet/Views/GridView"
+import ListView from "./Planet/Views/ListView"
 
 export default function PlanetsPage(){
-    const {planetsData} = useGlobalContext()
-    return(
-        <div className='home-container'>
-            <div className='home-inner-upper-container'>
-                
-                {
-                    planetsData.length > 0 && planetsData.map((item) => {
-                        return(
-                            <div>
-                                {item.name}
-                            </div>
-                        )
-                    })
-                }
+    const { planetsData, filmGrid, gridSetter } = useGlobalContext()
+    
+    
+    if(!filmGrid){
+        return(
+            <GridView />
+        )
+    }
 
-            </div>
-        </div>
-    )
+    else{
+        return(
+            <ListView />
+        )
+    }
+
+
 }

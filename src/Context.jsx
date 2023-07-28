@@ -9,6 +9,9 @@ const AppContext = React.createContext()
 export default function AppProvider({children}){
 
     const [filmGrid, setFilmGrid] = React.useState(true)
+    const [showSearch, setShowSearch] = React.useState(false)
+
+    const [currentPage, setCurrentPage] = React.useState('home')
 
     const [starWarsData, setstarWarsData] = React.useState([])
     const [currentUrlState, setCurrenrtUrlState] = React.useState(window.location.pathname)
@@ -19,6 +22,8 @@ export default function AppProvider({children}){
     const [starShipsData, setStarShipsData] = useState([])
     const [vehiclesData, setVehiclesData] = useState([])
 
+    const [showOptionMenu, setShowOptionMenu] = React.useState(false)
+
 
     function gridSetter(grid){
         if(grid){
@@ -27,6 +32,42 @@ export default function AppProvider({children}){
         else{
             setFilmGrid(false)
         }
+    }
+
+    // Tells which page are we on
+    function tellPage(page){
+        showSearchFunction(page)
+
+        if(page === 'home')
+            return;
+
+        if(page === 'films'){
+            setFilmGrid(true)
+            return
+        }
+            // return;
+        else{
+            setFilmGrid(true)
+
+        }
+
+
+    }
+
+
+
+    function showSearchFunction(page){
+        console.log("in");
+        if(page ==='home'){
+            setShowSearch(false)
+            return;
+        }
+        setShowSearch(true)
+
+    }
+
+    function showOptionsMenu(){
+        setShowOptionMenu(prevState => !prevState)
     }
 
 
@@ -91,7 +132,7 @@ export default function AppProvider({children}){
 
 
     return(
-        <AppContext.Provider value={{link, filmsData, peopleData, planetsData, starShipsData, vehiclesData, speciesData, filmGrid, gridSetter}}>
+        <AppContext.Provider value={{link, filmsData, peopleData, planetsData, starShipsData, vehiclesData, speciesData, filmGrid, gridSetter, tellPage, showSearch, showSearchFunction, showOptionMenu, showOptionsMenu}}>
             {children}
         </AppContext.Provider>
     )

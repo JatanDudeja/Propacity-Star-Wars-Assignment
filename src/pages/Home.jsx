@@ -3,6 +3,7 @@ import homePageImage from '../assets/home-character-image.png'
 
 
 export default function Home(){
+
     return(
         <div className='home-container'>
             <div className='home-inner-upper-container'>

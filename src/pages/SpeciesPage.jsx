@@ -1,25 +1,21 @@
 import React from 'react'
 import { useGlobalContext } from '../Context'
+import GridView from './Specie/Views/GridView'
+import ListView from './Specie/Views/ListView'
 
-export default function SpeciesPage(){
-    const {speciesData} = useGlobalContext()
-    console.log("species",speciesData);
-    
-    return(
-        <div className='home-container'>
-            <div className='home-inner-upper-container'>
-                
-                {
-                    speciesData.length > 0 && speciesData.map((item) => {
-                        return(
-                            <div>
-                                {item.name}
-                            </div>
-                        )
-                    })
-                }
+export default function SpeciesPage() {
+    const { speciesData, filmGrid, gridSetter } = useGlobalContext()
+    // console.log("species",speciesData);
 
-            </div>
-        </div>
-    )
+    if (!filmGrid) {
+        return (
+            <GridView />
+                            
+        )
+    }
+
+
+    else{
+        return(<ListView />)
+    }
 }

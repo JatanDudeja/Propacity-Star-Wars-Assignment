@@ -1,25 +1,24 @@
 import React from 'react'
 import { useGlobalContext } from '../Context'
+import ListView from './Vehicle/Views/ListView'
+import GridView from './Vehicle/Views/GridView'
 
-export default function VehiclesPage(){
-    const {vehiclesData} = useGlobalContext()
+export default function VehiclesPage() {
+    const { vehiclesData, filmGrid, gridSetter } = useGlobalContext()
     // console.log(filmsData);
-    
-    return(
-        <div className='home-container'>
-            <div className='home-inner-upper-container'>
-                
-                {
-                    vehiclesData.length > 0 && vehiclesData.map((item) => {
-                        return(
-                            <div>
-                                {item.name}
-                            </div>
-                        )
-                    })
-                }
 
-            </div>
-        </div>
-    )
+
+    if (!filmGrid) {
+        return (
+            <GridView />
+
+        )
+    }
+
+
+    else {
+        return (<ListView />)
+    }
+
+
 }
