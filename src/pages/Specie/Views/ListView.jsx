@@ -5,7 +5,7 @@ import listIcon from "../../../assets/list-icon.svg"
 import optionsIcon from '../../../assets/options-icon.svg'
 
 
-export default function ListView() {
+export default function ListView({speciesDD}) {
     const { speciesData, filmGrid, gridSetter } = useGlobalContext()
 
     return (
@@ -35,7 +35,7 @@ export default function ListView() {
                     <span></span>
                 </div>
                 {
-                    speciesData.map(specie => {
+                    speciesDD.map(specie => {
                         return (
                             <div className='grid-view-information-container'>
                                 <div className='grid-view'>

@@ -5,10 +5,11 @@ import gridIcon from '../../../assets/grid-icon.svg'
 import listIcon from "../../../assets/list-icon.svg"
 import optionsIcon from '../../../assets/options-icon.svg'
 import DropDown from '../../../components/DropDown'
+import DetailSideBar from '../../../components/DetailSideBar'
 
 
 export default function GridView() {
-    const { filmsData, filmGrid, gridSetter, showOptionMenu, showOptionsMenu } = useGlobalContext()
+    const { filmsData, filmGrid, gridSetter, showDots, showOptionMenu, showDetailSideBar } = useGlobalContext()
 
     return (
         <div className='home-container'>
@@ -29,31 +30,35 @@ export default function GridView() {
                         </button>
                     </div>
                 </div>
+
                 <div className='films-container'>
 
                     {
                         filmsData.length > 0 && filmsData.map((item) => {
                             return (
-                                <div className='film-container'>
-                                    <div className='film-poster'></div> {/* Image*/}
+                                <div key = {item.episode_id} className='film-container'>
+                                    <div className='film-poster' onClick={() => showDetailSideBar(item.episode_id, 'film')}></div> {/* Image*/}
                                     <div className='film-name'>
                                         <div className='container-inner'>
                                             <img className='reel-icon' src={reelIcon} alt='films-icon' />
                                             <span>{item.title}</span>
                                         </div>
                                         <div className='options-icon'>
-                                            <img src={optionsIcon} alt='films-icon' onClick={showOptionsMenu}/>
-
+                                            <img src={optionsIcon} alt='films-icon' onClick={() => showDots(item.episode_id)}/>
                                         </div>
                                     </div>
+                                    
+                                    { item.show && <DropDown  /> }
+                                    
                                 </div>
+                                
                             )
                         })
                     }
 
-                    <div>
-                        {showOptionMenu && <DropDown />}
-                    </div>
+                    
+
+                    {/* { showSideBar && <DetailSideBar />} */}
 
                 </div>
             </div>

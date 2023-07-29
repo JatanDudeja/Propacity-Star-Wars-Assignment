@@ -8,7 +8,7 @@ import optionsIcon from '../../../assets/options-icon.svg'
 
 
 
-export default function GridView() {
+export default function GridView({speciesDD}) {
 
 
 
@@ -39,7 +39,7 @@ export default function GridView() {
             <div className='films-container'>
 
                 {
-                    speciesData.length > 0 && speciesData.map((specie) => {
+                    speciesDD.length > 0 && speciesDD.map((specie) => {
                         return (
                             <div className='film-container'>
                                 <div className='film-poster'></div> {/* Image*/}

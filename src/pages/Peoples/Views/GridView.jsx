@@ -8,7 +8,7 @@ import optionsIcon from '../../../assets/options-icon.svg'
 
 
 
-export default function GridView() {
+export default function GridView({people}) {
 
 
 
@@ -39,7 +39,7 @@ export default function GridView() {
             <div className='films-container'>
 
                 {
-                    peopleData.length > 0 && peopleData.map((item) => {
+                    people.length > 0 && people.map((item) => {
                         return (
                             <div className='film-container'>
                                 <div className='film-poster'></div> {/* Image*/}

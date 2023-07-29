@@ -342,7 +342,9 @@ span {
 /* Drop Down Menu */
 
 .dropdown-container {
-  position:relative;
+  position: absolute;
+  margin-left: 169px;
+  color: black;
   display: flex;
   width: 172px;
   padding: 8px;
@@ -377,3 +379,86 @@ span {
   border-radius: 4px;
   background: #F1F1F5;
 }
+
+
+
+/* Detail Side Bar */
+
+
+.detail-sidebar {
+  overflow: scroll;
+  width: 400px;
+  flex-shrink: 0;
+  height: 100%;
+  position: absolute;
+  /* right: 0; */
+  top: 0;
+  right: 0;
+  z-index: 1;
+  color: white;
+  background-color: #03123B;
+
+}
+
+
+.detailSidebar-header {
+  display: flex;
+  width: 400px;
+  padding: 16px 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid black;
+  color: white;
+  background: #03123B;
+}
+
+
+.detailSidebar-header>button {
+  background: none;
+  border: 0;
+}
+
+.detailSidebar-data {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: black;
+}
+
+
+.detailSidebar-data-content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+}
+
+
+.summary {
+  border-radius: 8px;
+  border: 1px solid var(--black-dark-200, #F1F1F5);
+  background: var(--black-dark-100, #FAFAFB);
+  color: var(--text-black, #252C32);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  /* padding: 10px 16px; */
+}
+
+.heading {
+  margin: 0;
+  color: #FFF;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+

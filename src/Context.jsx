@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState , useEffect} from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import Data from "./Data"
 
 const AppContext = React.createContext()
 
@@ -8,23 +8,22 @@ const AppContext = React.createContext()
 
 export default function AppProvider({children}){
 
-    const [filmGrid, setFilmGrid] = React.useState(true)
-    const [showSearch, setShowSearch] = React.useState(false)
+    const [detail, setDetail] = React.useState({})
 
-    const [currentPage, setCurrentPage] = React.useState('home')
+    const [showSideBar, setShowSideBar] = React.useState(false)
 
-    const [starWarsData, setstarWarsData] = React.useState([])
-    const [currentUrlState, setCurrenrtUrlState] = React.useState(window.location.pathname)
-    const [peopleData, setPeopleData] = useState([])
-    const [filmsData, setFilmsData] = useState([])
-    const [planetsData, setPlanetsData] = useState([])
-    const [speciesData, setSpeciesData] = useState([])
-    const [starShipsData, setStarShipsData] = useState([])
-    const [vehiclesData, setVehiclesData] = useState([])
+    const [filmGrid, setFilmGrid] = React.useState(true) //check if grid layout is selected or list layout
+    const [showSearch, setShowSearch] = React.useState(false) // checks when to show the search box
+    const [peopleData, setPeopleData] = useState([]) // people data array
+    const [filmsData, setFilmsData] = useState([]) //film data array
+    const [planetsData, setPlanetsData] = useState([]) //planets data array
+    const [speciesData, setSpeciesData] = useState([]) // speceis data array
+    const [starShipsData, setStarShipsData] = useState([]) // starships data array
+    const [vehiclesData, setVehiclesData] = useState([]) // vehicles data array
 
-    const [showOptionMenu, setShowOptionMenu] = React.useState(false)
+    const [showOptionMenu, setShowOptionMenu] = React.useState(false) // checks if three dot / kebab menu is clicked or not and whether to display options menu or not
 
-
+    // grid / list layout changing button click method
     function gridSetter(grid){
         if(grid){
             setFilmGrid(true)
@@ -32,6 +31,20 @@ export default function AppProvider({children}){
         else{
             setFilmGrid(false)
         }
+    }
+
+    
+
+
+    function getFromLocalStorage(){
+        let favourites = localStorage.getItem('filmsData')
+        if(favourites)
+            favourites = JSON.parse(favourites)
+        else{
+            favourites = []
+        }
+
+        return favourites 
     }
 
     // Tells which page are we on
@@ -55,9 +68,9 @@ export default function AppProvider({children}){
     }
 
 
-
+    // function to change the state of search box visibilty
     function showSearchFunction(page){
-        console.log("in");
+        // console.log("in");
         if(page ==='home'){
             setShowSearch(false)
             return;
@@ -66,16 +79,51 @@ export default function AppProvider({children}){
 
     }
 
-    function showOptionsMenu(){
-        setShowOptionMenu(prevState => !prevState)
+
+    // function to change the state of visibilty of options menu by clicking on kebab / three dot menu
+    function showDots(id){
+        
+        const film = filmsData.map(item => {
+            return (
+                item.episode_id === id ? {...item , show: !item.show} : {...item , show:false}
+            )
+        })    
+
+        setFilmsData(film)
+        // console.log("1")
+        
+    }
+
+
+    function showDetailSideBar(id, page){
+        if(page === 'film'){
+            const dataObj = ['title', 'episode_id', 'opening_crawl', 'director', 'producer', 'release_date', 'url']
+            setDetail({data : dataObj, pageData : filmsData, id : id})
+        }
+
+        console.log(id, page);
+        setShowSideBar(prevState => !prevState)
+        
+    }
+
+
+    function closeDetailSideBar(){
+        console.log("in");
+        // setShowSideBar(false)
     }
 
 
     // console.log(window.location.pathname)
 
+
+    // api link
     const starWars = 'https://swapi.dev/api/'
 
+
+    // collection of all the data from api on the very first render
     React.useEffect(() => {
+        // hard coded films array
+        setFilmsData(Data)
         
         const pr = ['films' , 'people', 'planets','species', 'starships','vehicles']
         const arr = pr.map( async item => ({
@@ -87,8 +135,21 @@ export default function AppProvider({children}){
             // console.log(results);
             
             // filmsData = results[0]
-            setFilmsData(results[0].data.data.results)
-            // localStorage.setItem('filmsData')
+            // localStorage.setItem('filmsData', filmsData)
+
+
+            // setFilmsData(results[0].data.data.results)
+            const films = Data
+            // const films = results[0].data.data.results;
+            // console.log(films)8
+
+            const filmDataModify = films.map(item => (
+                { ...item, show: false }
+            ))
+
+            // console.log("modify" , filmDataModify)
+
+
             setPeopleData(results[1].data.data.results)
             setPlanetsData(results[2].data.data.results)
             setSpeciesData(results[3].data.data.results)
@@ -97,42 +158,36 @@ export default function AppProvider({children}){
         }
         calling();
 
-
-
-
-        // const fetching = async () =>{
-        //     const films = await axios.get(starWars+"films");
-        //     const people = await axios.get(starWars+"people");
-        //     console.log(films , people)
-        // }
-        //  fetching();
- 
-
+        
         
 
     }, [])
 
-    const link = async text => {
-        console.log("fetching data...");
-        try{
-            const url = starWars+text;
-            const {data} = await axios.get(url)
-            const results = data.results
-            results ? setstarWarsData(results) : setstarWarsData([])
-            console.log(results)
-        }
-        catch(e){
-            console.log(e.response)
-        }
+    
 
-    }
+    
+
+    // const link = async text => {
+    //     console.log("fetching data...");
+    //     try{
+    //         const url = starWars+text;
+    //         const {data} = await axios.get(url)
+    //         const results = data.results
+    //         results ? setstarWarsData(results) : setstarWarsData([])
+    //         console.log(results)
+    //     }
+    //     catch(e){
+    //         console.log(e.response)
+    //     }
+
+    // }
 
 
 
 
 
     return(
-        <AppContext.Provider value={{link, filmsData, peopleData, planetsData, starShipsData, vehiclesData, speciesData, filmGrid, gridSetter, tellPage, showSearch, showSearchFunction, showOptionMenu, showOptionsMenu}}>
+        <AppContext.Provider value={{filmsData, peopleData, planetsData, starShipsData, vehiclesData, speciesData, filmGrid, gridSetter, tellPage, showSearch, showSearchFunction, showOptionMenu, showDots, showSideBar, showDetailSideBar, detail, closeDetailSideBar}}>
             {children}
         </AppContext.Provider>
     )
