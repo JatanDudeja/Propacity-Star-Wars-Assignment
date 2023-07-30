@@ -3,238 +3,214 @@
 
 export default [
     {
-        "name": "Human", 
-        "classification": "mammal", 
-        "designation": "sentient", 
-        "average_height": "180", 
-        "skin_colors": "caucasian, black, asian, hispanic", 
-        "hair_colors": "blonde, brown, black, red", 
-        "eye_colors": "brown, blue, green, hazel, grey, amber", 
-        "average_lifespan": "120", 
-        "homeworld": "https://swapi.dev/api/planets/9/", 
-        "language": "Galactic Basic", 
-        "people": [
-            "https://swapi.dev/api/people/66/", 
-            "https://swapi.dev/api/people/67/", 
-            "https://swapi.dev/api/people/68/", 
-            "https://swapi.dev/api/people/74/"
-        ], 
+        "name": "Sand Crawler", 
+        "model": "Digger Crawler", 
+        "manufacturer": "Corellia Mining Corporation", 
+        "cost_in_credits": "150000", 
+        "length": "36.8 ", 
+        "max_atmosphering_speed": "30", 
+        "crew": "46", 
+        "passengers": "30", 
+        "cargo_capacity": "50000", 
+        "consumables": "2 months", 
+        "vehicle_class": "wheeled", 
+        "pilots": [], 
         "films": [
             "https://swapi.dev/api/films/1/", 
-            "https://swapi.dev/api/films/2/", 
-            "https://swapi.dev/api/films/3/", 
-            "https://swapi.dev/api/films/4/", 
-            "https://swapi.dev/api/films/5/", 
-            "https://swapi.dev/api/films/6/"
+            "https://swapi.dev/api/films/5/"
         ], 
-        "created": "2014-12-10T13:52:11.567000Z", 
-        "edited": "2014-12-20T21:36:42.136000Z", 
-        "url": "https://swapi.dev/api/species/1/"
+        "created": "2014-12-10T15:36:25.724000Z", 
+        "edited": "2014-12-20T21:30:21.661000Z", 
+        "url": "https://swapi.dev/api/vehicles/4/"
     }, 
     {
-        "name": "Droid", 
-        "classification": "artificial", 
-        "designation": "sentient", 
-        "average_height": "n/a", 
-        "skin_colors": "n/a", 
-        "hair_colors": "n/a", 
-        "eye_colors": "n/a", 
-        "average_lifespan": "indefinite", 
-        "homeworld": null, 
-        "language": "n/a", 
-        "people": [
-            "https://swapi.dev/api/people/2/", 
-            "https://swapi.dev/api/people/3/", 
-            "https://swapi.dev/api/people/8/", 
-            "https://swapi.dev/api/people/23/"
-        ], 
-        "films": [
-            "https://swapi.dev/api/films/1/", 
-            "https://swapi.dev/api/films/2/", 
-            "https://swapi.dev/api/films/3/", 
-            "https://swapi.dev/api/films/4/", 
-            "https://swapi.dev/api/films/5/", 
-            "https://swapi.dev/api/films/6/"
-        ], 
-        "created": "2014-12-10T15:16:16.259000Z", 
-        "edited": "2014-12-20T21:36:42.139000Z", 
-        "url": "https://swapi.dev/api/species/2/"
-    }, 
-    {
-        "name": "Wookie", 
-        "classification": "mammal", 
-        "designation": "sentient", 
-        "average_height": "210", 
-        "skin_colors": "gray", 
-        "hair_colors": "black, brown", 
-        "eye_colors": "blue, green, yellow, brown, golden, red", 
-        "average_lifespan": "400", 
-        "homeworld": "https://swapi.dev/api/planets/14/", 
-        "language": "Shyriiwook", 
-        "people": [
-            "https://swapi.dev/api/people/13/", 
-            "https://swapi.dev/api/people/80/"
-        ], 
-        "films": [
-            "https://swapi.dev/api/films/1/", 
-            "https://swapi.dev/api/films/2/", 
-            "https://swapi.dev/api/films/3/", 
-            "https://swapi.dev/api/films/6/"
-        ], 
-        "created": "2014-12-10T16:44:31.486000Z", 
-        "edited": "2014-12-20T21:36:42.142000Z", 
-        "url": "https://swapi.dev/api/species/3/"
-    }, 
-    {
-        "name": "Rodian", 
-        "classification": "sentient", 
-        "designation": "reptilian", 
-        "average_height": "170", 
-        "skin_colors": "green, blue", 
-        "hair_colors": "n/a", 
-        "eye_colors": "black", 
-        "average_lifespan": "unknown", 
-        "homeworld": "https://swapi.dev/api/planets/23/", 
-        "language": "Galatic Basic", 
-        "people": [
-            "https://swapi.dev/api/people/15/"
-        ], 
+        "name": "T-16 skyhopper", 
+        "model": "T-16 skyhopper", 
+        "manufacturer": "Incom Corporation", 
+        "cost_in_credits": "14500", 
+        "length": "10.4 ", 
+        "max_atmosphering_speed": "1200", 
+        "crew": "1", 
+        "passengers": "1", 
+        "cargo_capacity": "50", 
+        "consumables": "0", 
+        "vehicle_class": "repulsorcraft", 
+        "pilots": [], 
         "films": [
             "https://swapi.dev/api/films/1/"
         ], 
-        "created": "2014-12-10T17:05:26.471000Z", 
-        "edited": "2014-12-20T21:36:42.144000Z", 
-        "url": "https://swapi.dev/api/species/4/"
+        "created": "2014-12-10T16:01:52.434000Z", 
+        "edited": "2014-12-20T21:30:21.665000Z", 
+        "url": "https://swapi.dev/api/vehicles/6/"
     }, 
     {
-        "name": "Hutt", 
-        "classification": "gastropod", 
-        "designation": "sentient", 
-        "average_height": "300", 
-        "skin_colors": "green, brown, tan", 
-        "hair_colors": "n/a", 
-        "eye_colors": "yellow, red", 
-        "average_lifespan": "1000", 
-        "homeworld": "https://swapi.dev/api/planets/24/", 
-        "language": "Huttese", 
-        "people": [
-            "https://swapi.dev/api/people/16/"
+        "name": "X-34 landspeeder", 
+        "model": "X-34 landspeeder", 
+        "manufacturer": "SoroSuub Corporation", 
+        "cost_in_credits": "10550", 
+        "length": "3.4 ", 
+        "max_atmosphering_speed": "250", 
+        "crew": "1", 
+        "passengers": "1", 
+        "cargo_capacity": "5", 
+        "consumables": "unknown", 
+        "vehicle_class": "repulsorcraft", 
+        "pilots": [], 
+        "films": [
+            "https://swapi.dev/api/films/1/"
         ], 
+        "created": "2014-12-10T16:13:52.586000Z", 
+        "edited": "2014-12-20T21:30:21.668000Z", 
+        "url": "https://swapi.dev/api/vehicles/7/"
+    }, 
+    {
+        "name": "TIE/LN starfighter", 
+        "model": "Twin Ion Engine/Ln Starfighter", 
+        "manufacturer": "Sienar Fleet Systems", 
+        "cost_in_credits": "unknown", 
+        "length": "6.4", 
+        "max_atmosphering_speed": "1200", 
+        "crew": "1", 
+        "passengers": "0", 
+        "cargo_capacity": "65", 
+        "consumables": "2 days", 
+        "vehicle_class": "starfighter", 
+        "pilots": [], 
         "films": [
             "https://swapi.dev/api/films/1/", 
+            "https://swapi.dev/api/films/2/", 
             "https://swapi.dev/api/films/3/"
         ], 
-        "created": "2014-12-10T17:12:50.410000Z", 
-        "edited": "2014-12-20T21:36:42.146000Z", 
-        "url": "https://swapi.dev/api/species/5/"
+        "created": "2014-12-10T16:33:52.860000Z", 
+        "edited": "2014-12-20T21:30:21.670000Z", 
+        "url": "https://swapi.dev/api/vehicles/8/"
     }, 
     {
-        "name": "Yoda's species", 
-        "classification": "mammal", 
-        "designation": "sentient", 
-        "average_height": "66", 
-        "skin_colors": "green, yellow", 
-        "hair_colors": "brown, white", 
-        "eye_colors": "brown, green, yellow", 
-        "average_lifespan": "900", 
-        "homeworld": "https://swapi.dev/api/planets/28/", 
-        "language": "Galactic basic", 
-        "people": [
-            "https://swapi.dev/api/people/20/"
-        ], 
-        "films": [
-            "https://swapi.dev/api/films/2/", 
-            "https://swapi.dev/api/films/3/", 
-            "https://swapi.dev/api/films/4/", 
-            "https://swapi.dev/api/films/5/", 
-            "https://swapi.dev/api/films/6/"
-        ], 
-        "created": "2014-12-15T12:27:22.877000Z", 
-        "edited": "2014-12-20T21:36:42.148000Z", 
-        "url": "https://swapi.dev/api/species/6/"
-    }, 
-    {
-        "name": "Trandoshan", 
-        "classification": "reptile", 
-        "designation": "sentient", 
-        "average_height": "200", 
-        "skin_colors": "brown, green", 
-        "hair_colors": "none", 
-        "eye_colors": "yellow, orange", 
-        "average_lifespan": "unknown", 
-        "homeworld": "https://swapi.dev/api/planets/29/", 
-        "language": "Dosh", 
-        "people": [
-            "https://swapi.dev/api/people/24/"
+        "name": "Snowspeeder", 
+        "model": "t-47 airspeeder", 
+        "manufacturer": "Incom corporation", 
+        "cost_in_credits": "unknown", 
+        "length": "4.5", 
+        "max_atmosphering_speed": "650", 
+        "crew": "2", 
+        "passengers": "0", 
+        "cargo_capacity": "10", 
+        "consumables": "none", 
+        "vehicle_class": "airspeeder", 
+        "pilots": [
+            "https://swapi.dev/api/people/1/", 
+            "https://swapi.dev/api/people/18/"
         ], 
         "films": [
             "https://swapi.dev/api/films/2/"
         ], 
-        "created": "2014-12-15T13:07:47.704000Z", 
-        "edited": "2014-12-20T21:36:42.151000Z", 
-        "url": "https://swapi.dev/api/species/7/"
+        "created": "2014-12-15T12:22:12Z", 
+        "edited": "2014-12-20T21:30:21.672000Z", 
+        "url": "https://swapi.dev/api/vehicles/14/"
     }, 
     {
-        "name": "Mon Calamari", 
-        "classification": "amphibian", 
-        "designation": "sentient", 
-        "average_height": "160", 
-        "skin_colors": "red, blue, brown, magenta", 
-        "hair_colors": "none", 
-        "eye_colors": "yellow", 
-        "average_lifespan": "unknown", 
-        "homeworld": "https://swapi.dev/api/planets/31/", 
-        "language": "Mon Calamarian", 
-        "people": [
-            "https://swapi.dev/api/people/27/"
+        "name": "TIE bomber", 
+        "model": "TIE/sa bomber", 
+        "manufacturer": "Sienar Fleet Systems", 
+        "cost_in_credits": "unknown", 
+        "length": "7.8", 
+        "max_atmosphering_speed": "850", 
+        "crew": "1", 
+        "passengers": "0", 
+        "cargo_capacity": "none", 
+        "consumables": "2 days", 
+        "vehicle_class": "space/planetary bomber", 
+        "pilots": [], 
+        "films": [
+            "https://swapi.dev/api/films/2/", 
+            "https://swapi.dev/api/films/3/"
         ], 
+        "created": "2014-12-15T12:33:15.838000Z", 
+        "edited": "2014-12-20T21:30:21.675000Z", 
+        "url": "https://swapi.dev/api/vehicles/16/"
+    }, 
+    {
+        "name": "AT-AT", 
+        "model": "All Terrain Armored Transport", 
+        "manufacturer": "Kuat Drive Yards, Imperial Department of Military Research", 
+        "cost_in_credits": "unknown", 
+        "length": "20", 
+        "max_atmosphering_speed": "60", 
+        "crew": "5", 
+        "passengers": "40", 
+        "cargo_capacity": "1000", 
+        "consumables": "unknown", 
+        "vehicle_class": "assault walker", 
+        "pilots": [], 
+        "films": [
+            "https://swapi.dev/api/films/2/", 
+            "https://swapi.dev/api/films/3/"
+        ], 
+        "created": "2014-12-15T12:38:25.937000Z", 
+        "edited": "2014-12-20T21:30:21.677000Z", 
+        "url": "https://swapi.dev/api/vehicles/18/"
+    }, 
+    {
+        "name": "AT-ST", 
+        "model": "All Terrain Scout Transport", 
+        "manufacturer": "Kuat Drive Yards, Imperial Department of Military Research", 
+        "cost_in_credits": "unknown", 
+        "length": "2", 
+        "max_atmosphering_speed": "90", 
+        "crew": "2", 
+        "passengers": "0", 
+        "cargo_capacity": "200", 
+        "consumables": "none", 
+        "vehicle_class": "walker", 
+        "pilots": [
+            "https://swapi.dev/api/people/13/"
+        ], 
+        "films": [
+            "https://swapi.dev/api/films/2/", 
+            "https://swapi.dev/api/films/3/"
+        ], 
+        "created": "2014-12-15T12:46:42.384000Z", 
+        "edited": "2014-12-20T21:30:21.679000Z", 
+        "url": "https://swapi.dev/api/vehicles/19/"
+    }, 
+    {
+        "name": "Storm IV Twin-Pod cloud car", 
+        "model": "Storm IV Twin-Pod", 
+        "manufacturer": "Bespin Motors", 
+        "cost_in_credits": "75000", 
+        "length": "7", 
+        "max_atmosphering_speed": "1500", 
+        "crew": "2", 
+        "passengers": "0", 
+        "cargo_capacity": "10", 
+        "consumables": "1 day", 
+        "vehicle_class": "repulsorcraft", 
+        "pilots": [], 
+        "films": [
+            "https://swapi.dev/api/films/2/"
+        ], 
+        "created": "2014-12-15T12:58:50.530000Z", 
+        "edited": "2014-12-20T21:30:21.681000Z", 
+        "url": "https://swapi.dev/api/vehicles/20/"
+    }, 
+    {
+        "name": "Sail barge", 
+        "model": "Modified Luxury Sail Barge", 
+        "manufacturer": "Ubrikkian Industries Custom Vehicle Division", 
+        "cost_in_credits": "285000", 
+        "length": "30", 
+        "max_atmosphering_speed": "100", 
+        "crew": "26", 
+        "passengers": "500", 
+        "cargo_capacity": "2000000", 
+        "consumables": "Live food tanks", 
+        "vehicle_class": "sail barge", 
+        "pilots": [], 
         "films": [
             "https://swapi.dev/api/films/3/"
         ], 
-        "created": "2014-12-18T11:09:52.263000Z", 
-        "edited": "2014-12-20T21:36:42.153000Z", 
-        "url": "https://swapi.dev/api/species/8/"
-    }, 
-    {
-        "name": "Ewok", 
-        "classification": "mammal", 
-        "designation": "sentient", 
-        "average_height": "100", 
-        "skin_colors": "brown", 
-        "hair_colors": "white, brown, black", 
-        "eye_colors": "orange, brown", 
-        "average_lifespan": "unknown", 
-        "homeworld": "https://swapi.dev/api/planets/7/", 
-        "language": "Ewokese", 
-        "people": [
-            "https://swapi.dev/api/people/30/"
-        ], 
-        "films": [
-            "https://swapi.dev/api/films/3/"
-        ], 
-        "created": "2014-12-18T11:22:00.285000Z", 
-        "edited": "2014-12-20T21:36:42.155000Z", 
-        "url": "https://swapi.dev/api/species/9/"
-    }, 
-    {
-        "name": "Sullustan", 
-        "classification": "mammal", 
-        "designation": "sentient", 
-        "average_height": "180", 
-        "skin_colors": "pale", 
-        "hair_colors": "none", 
-        "eye_colors": "black", 
-        "average_lifespan": "unknown", 
-        "homeworld": "https://swapi.dev/api/planets/33/", 
-        "language": "Sullutese", 
-        "people": [
-            "https://swapi.dev/api/people/31/"
-        ], 
-        "films": [
-            "https://swapi.dev/api/films/3/"
-        ], 
-        "created": "2014-12-18T11:26:20.103000Z", 
-        "edited": "2014-12-20T21:36:42.157000Z", 
-        "url": "https://swapi.dev/api/species/10/"
+        "created": "2014-12-18T10:44:14.217000Z", 
+        "edited": "2014-12-20T21:30:21.684000Z", 
+        "url": "https://swapi.dev/api/vehicles/24/"
     }
 ]

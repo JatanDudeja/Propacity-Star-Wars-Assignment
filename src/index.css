@@ -9,7 +9,10 @@ body {
 
 }
 
-
+.reel-image{
+  margin-left: -10px;
+  margin-right: 15px;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -234,6 +237,7 @@ code {
   display: flex;
   justify-content: space-between;
 
+
 }
 
 .film-button {
@@ -241,23 +245,38 @@ code {
   border: 1px solid white;
   color: white;
   display: inline;
+
 }
 
-.film-button::selection {
+.button-left{
+  border-top-left-radius: 4px;
+  border-end-start-radius: 4px;
+  border: 1px solid #DEDEDE;
+  background: var(--grey-3, #F1F1F5);
+  color: #696974;
+  
+}
+.button-right{
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: 1px solid #DEDEDE;
+  background: #F1F1F5;
+  color: #696974;
+  
+}
+
+/* .film-button::selection {
   background-color: transparent;
   border: 1px solid white;
   background-color: white;
   color: grey;
   display: inline;
-}
+} */
 
 .grid {
   display: flex;
   align-items: center;
-
   justify-content: center;
-  border-top-left-radius: 2px;
-  border-end-start-radius: 2px;
 }
 
 .list {
@@ -357,6 +376,16 @@ span {
   background: #FFF;
 }
 
+.dropdown-container-grid {
+  margin-left: 16%;
+}
+
+.dropdown-container-list {
+  margin-left: 77%;
+  margin-top: 16%;
+}
+
+
 .dropdown-image {
   color: white;
 }
@@ -387,11 +416,10 @@ span {
 
 .detail-sidebar {
   overflow: scroll;
-  width: 400px;
+  width: 30%;
   flex-shrink: 0;
   height: 100%;
   position: absolute;
-  /* right: 0; */
   top: 0;
   right: 0;
   z-index: 1;
@@ -403,53 +431,33 @@ span {
 
 .detailSidebar-header {
   display: flex;
-  width: 400px;
   padding: 16px 20px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
   color: white;
   background: #03123B;
+  margin-bottom: 30px;
 }
 
 
 .detailSidebar-header>button {
   background: none;
   border: 0;
+  padding: 0;
 }
 
 .detailSidebar-data {
   padding-left: 20px;
   padding-right: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  color: black;
+  color: white;
 }
 
 
 .detailSidebar-data-content {
-  display: flex;
-  flex-direction: column;
-  padding: 16px 20px;
-}
-
-
-.summary {
-  border-radius: 8px;
-  border: 1px solid var(--black-dark-200, #F1F1F5);
-  background: var(--black-dark-100, #FAFAFB);
-  color: var(--text-black, #252C32);
-  font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Poppins;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: 0.1px;
-  /* padding: 10px 16px; */
+  margin-bottom: 20px;
 }
 
 .heading {
@@ -462,3 +470,205 @@ span {
   line-height: 22px;
 }
 
+
+.summary {
+  border-radius: 8px;
+  border: 1px solid var(--black-dark-200, #F1F1F5);
+  background: var(--black-dark-100, #FAFAFB);
+  color: var(--text-black, #252C32);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  padding: 15px 16px;
+}
+
+
+.detailSidebar-image {
+  border-radius: 20px;
+  width: 100%;
+  height: 230px;
+  border: 1px solid white;
+  margin-top: 15px;
+}
+
+.close-button-sidebar {
+  cursor: pointer;
+}
+
+.button-container {
+  padding: 15px 12px;
+  border-top: 1px solid white;
+  text-align: center;
+
+
+
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  background: #CB1A80;
+  color: #FAFAFB;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  cursor: pointer;
+
+  /* 133.333% */
+}
+
+
+.detailSidebar-header>span {
+  color: var(--white-1, #FFF);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+  /* 150% */
+  letter-spacing: 0.1px;
+
+}
+
+
+/* Dialog Box */
+
+.dialog-box-container {
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  position: fixed;
+  top: 40%;
+  left: 45%;
+  /* display:grid; */
+  /* place-items:center; */
+  background-color: white;
+  height: fit-content;
+  width: 20%;
+  padding: 2%;
+  border-radius: 12px;
+
+
+  /* Shadow/xl */
+  box-shadow: 0px 8px 8px -4px rgba(16, 24, 40, 0.03), 0px 20px 24px -4px rgba(16, 24, 40, 0.08);
+}
+
+.dialog-box-warning {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogBox-warning1 {
+  color: #101828;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  /* 155.556% */
+}
+
+.dialogBox-warning2 {
+  color: #667085;
+
+  /* Text sm/Normal */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 142.857% */
+}
+
+.img-div1 {
+  background-color: #FC5A5A;
+  border-radius: 50%;
+  width: 50px;
+  opacity: 0.1;
+}
+
+/* .img-div2{
+  background-color:#FC5A5A;
+  border-radius: 50%;
+  width: 30px;
+  opacity: 1; 
+
+}*/
+
+.dialogBox-delete-icon {
+  width: 50px;
+
+}
+
+.dialogBox-close {
+  border-radius: 8px;
+  border: 1px solid var(--grey-stroke, #DEDEDE);
+  background: var(--white, #FFF);
+  width: 46%;
+  height: 100%;
+  color: #344054;
+  /* Text md/Medium */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  /* 150% */
+  /* Shadow/xs */
+  height: 3rem;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+
+.dialog-box-button {
+  margin-top: 10%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.dialogBox-delete {
+  width: 46%;
+  border-radius: 8px;
+  border: 1px solid #FC5A5A;
+  background: #FC5A5A;
+  /* Shadow/xs */
+  height: 3rem;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  color: #FFF;
+
+  /* Text md/Medium */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  /* 150% */
+  cursor: pointer;
+
+
+}
+
+.name {
+  color: #667085;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}

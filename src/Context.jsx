@@ -1,16 +1,36 @@
-import React, { useContext, useState , useEffect} from "react"
+import React, { useContext, useState, useEffect } from "react"
 import axios from "axios"
-import Data from "./Data"
+import StData from "./StData"
+import SData from "./SData"
+import Data from './Data'
+import PeopleData from "./PeopleData"
+import VehiclesData from './VehiclesData'
+import PData from "./PData"
 
 const AppContext = React.createContext()
 
 
 
-export default function AppProvider({children}){
+export default function AppProvider({ children }) {
 
     const [detail, setDetail] = React.useState({})
 
-    const [showSideBar, setShowSideBar] = React.useState(false)
+    // stores the detail side bar state of every page
+    const [showSideBar, setShowSideBar] = React.useState(
+        {
+            filmPage: false,
+            peoplePage: false,
+            planetPage: false,
+            speciesPage: false,
+            vehiclesPage: false,
+            startshipsPage: false
+        }
+    )
+
+    const [dataToDelete, setDataToDelete] = React.useState({})
+
+    const [deleteElement, setDeleteElement] = React.useState(false) // state for delete element dialog box
+    const [confirm, setConfirm] = React.useState(false) // confirm delete
 
     const [filmGrid, setFilmGrid] = React.useState(true) //check if grid layout is selected or list layout
     const [showSearch, setShowSearch] = React.useState(false) // checks when to show the search box
@@ -24,42 +44,121 @@ export default function AppProvider({children}){
     const [showOptionMenu, setShowOptionMenu] = React.useState(false) // checks if three dot / kebab menu is clicked or not and whether to display options menu or not
 
     // grid / list layout changing button click method
-    function gridSetter(grid){
-        if(grid){
+    function gridSetter(grid) {
+        if (grid) {
             setFilmGrid(true)
         }
-        else{
+        else {
             setFilmGrid(false)
         }
     }
 
-    
 
-
-    function getFromLocalStorage(){
-        let favourites = localStorage.getItem('filmsData')
-        if(favourites)
-            favourites = JSON.parse(favourites)
-        else{
-            favourites = []
-        }
-
-        return favourites 
+    function deleteCautionTrigger(id, page, item) {
+        // console.log("caution");
+        setDataToDelete({ id, page, item })
+        // setShowOptionMenu(false)
+        setDeleteElement(true)
     }
 
-    // Tells which page are we on
-    function tellPage(page){
-        showSearchFunction(page)
+    function closeDialogBox() {
+        console.log("close");
+        setDataToDelete(null)
+        setDeleteElement(false)
+    }
 
-        if(page === 'home')
+
+    function removeData(id, page, item) {
+        if (page === 'film') {
+            // console.log(data)
+            const newData = filmsData.filter(item => {
+                return (
+                    item.episode_id !== id
+                )
+            })
+
+            setFilmsData(newData)
+        }
+        else if (page === 'people') {
+            const newData = peopleData.filter(item => {
+                return (
+                    item.height !== id
+                )
+            })
+
+            setPeopleData(newData)
+
+        }
+        else if (page === 'planets') {
+            const newData = planetsData.filter(item => {
+                return (
+                    item.name !== id
+                )
+            })
+
+            setPlanetsData(newData)
+
+        }
+        else if (page === 'species') {
+            const newData = speciesData.filter(item => {
+                return (
+                    item.name !== id
+                )
+            })
+
+            setSpeciesData(newData)
+
+        }
+        else if (page === 'starships') {
+            const newData = starShipsData.filter(item => {
+                return (
+                    item.name !== id
+                )
+            })
+
+            setStarShipsData(newData)
+
+        }
+        else if (page === 'vehicles') {
+            const newData = vehiclesData.filter(item => {
+                return (
+                    item.name !== id
+                )
+            })
+
+            setVehiclesData(newData)
+
+        }
+
+        setDataToDelete({})
+        setDeleteElement(false)
+        setShowOptionMenu(false)
+
+    }
+
+
+
+    // Tells which page are we on
+    function tellPage(page) {
+        showSearchFunction(page)
+        setShowSideBar({
+            filmPage: false,
+            peoplePage: false,
+            planetPage: false,
+            speciesPage: false,
+            vehiclesPage: false,
+            startshipsPage: false
+        })
+
+        if (page === 'home')
             return;
 
-        if(page === 'films'){
+        if (page === 'films') {
             setFilmGrid(true)
             return
         }
-            // return;
-        else{
+        // return;
+        else {
             setFilmGrid(true)
 
         }
@@ -69,9 +168,9 @@ export default function AppProvider({children}){
 
 
     // function to change the state of search box visibilty
-    function showSearchFunction(page){
+    function showSearchFunction(page) {
         // console.log("in");
-        if(page ==='home'){
+        if (page === 'home') {
             setShowSearch(false)
             return;
         }
@@ -81,39 +180,129 @@ export default function AppProvider({children}){
 
 
     // function to change the state of visibilty of options menu by clicking on kebab / three dot menu
-    function showDots(id){
-        
-        const film = filmsData.map(item => {
-            return (
-                item.episode_id === id ? {...item , show: !item.show} : {...item , show:false}
-            )
-        })    
-
-        setFilmsData(film)
-        // console.log("1")
-        
-    }
+    function showDots(id, dataArray, page) {
+        // console.log(dataArray);
+        // console.log(page);
 
 
-    function showDetailSideBar(id, page){
-        if(page === 'film'){
-            const dataObj = ['title', 'episode_id', 'opening_crawl', 'director', 'producer', 'release_date', 'url']
-            setDetail({data : dataObj, pageData : filmsData, id : id})
+        if (page === 'films') {
+            // console.log(id)
+            const data = dataArray.map(item => {
+
+                return (
+                    item.episode_id === id ? { ...item, show: !item.show } : { ...item, show: false }
+                )
+            })
+            setFilmsData(data)
+
+        }
+        else if (page === 'people') {
+            console.log(id)
+            const data = dataArray.map(item => {
+
+                return (
+                    item.height === id ? { ...item, show: !item.show } : { ...item, show: false }
+                )
+            })
+            setPeopleData(data)
+
+        }
+        else if (page === 'planets') {
+            const data = dataArray.map(item => {
+
+                return (
+                    item.name === id ? { ...item, show: !item.show } : { ...item, show: false }
+                )
+            })
+            setPlanetsData(data)
+
+        }
+        else if (page === 'species') {
+            const data = dataArray.map(item => {
+
+                return (
+                    item.name === id ? { ...item, show: !item.show } : { ...item, show: false }
+                )
+            })
+            setSpeciesData(data)
+
+        }
+        else if (page === 'starships') {
+            console.log("Into starships")
+            const data = dataArray.map(item => {
+
+                return (
+                    item.name === id ? { ...item, show: !item.show } : { ...item, show: false }
+                )
+            })
+            setStarShipsData(data)
+
+
+        }
+        else if (page === 'vehicles') {
+            const data = dataArray.map(item => {
+
+                return (
+                    item.name === id ? { ...item, show: !item.show } : { ...item, show: false }
+                )
+            })
+            setVehiclesData(data)
+
+
         }
 
-        console.log(id, page);
-        setShowSideBar(prevState => !prevState)
-        
+        // console.log("1")
+
     }
 
 
-    function closeDetailSideBar(){
-        console.log("in");
-        // setShowSideBar(false)
+    function showDetailSideBar(id, page) {
+        setDetail({ id: id })
+        if (page === 'film') {
+            // console.log(data)
+            setShowSideBar({ ...showSideBar, filmPage: true })
+        }
+        else if (page === 'people') {
+            setShowSideBar({ ...showSideBar, peoplePage: true })
+
+        }
+        else if (page === 'planets') {
+            setShowSideBar({ ...showSideBar, planetPage: true })
+
+        }
+        else if (page === 'species') {
+            setShowSideBar({ ...showSideBar, speciesPage: true })
+
+        }
+        else if (page === 'starships') {
+            setShowSideBar({ ...showSideBar, startshipsPage: true })
+
+        }
+        else if (page === 'vehicles') {
+            setShowSideBar({ ...showSideBar, vehiclesPage: true })
+
+        }
+
+        // console.log(id, page);
+
     }
 
 
-    // console.log(window.location.pathname)
+    function closeDetailSideBar() {
+        // console.log("in");
+        setShowSideBar(
+            {
+                filmPage: false,
+                peoplePage: false,
+                planetPage: false,
+                speciesPage: false,
+                vehiclesPage: false,
+                startshipsPage: false
+            }
+        )
+    }
+
+
 
 
     // api link
@@ -122,72 +311,114 @@ export default function AppProvider({children}){
 
     // collection of all the data from api on the very first render
     React.useEffect(() => {
-        // hard coded films array
-        setFilmsData(Data)
-        
-        const pr = ['films' , 'people', 'planets','species', 'starships','vehicles']
-        const arr = pr.map( async item => ({
+
+        const pr = ['films', 'people', 'planets', 'species', 'starships', 'vehicles']
+        const arr = pr.map(async item => ({
             data: await axios.get(starWars + item)
         }));
 
-        const calling = async () =>{
+
+        // const results = await Promise.all(arr);
+
+
+        // const films = Data
+        // const peeps = PeopleData
+        // const plans = PData
+        // const spe = SData
+        // const star = StData
+        // const vec = VehiclesData
+
+        // films.map(item => (
+        //     { ...item, show: false }
+        // ))
+
+
+        // peeps.map(item => (
+        //     { ...item, show: false }
+        // ))
+
+        // plans.map(item => (
+        //     { ...item, show: false }
+        // ))
+
+        // spe.map(item => (
+        //     { ...item, show: false }
+        // ))
+
+        // star.map(item => (
+        //     { ...item, show: false }
+        // ))
+
+        // vec.map(item => (
+        //     { ...item, show: false }
+        // ))
+
+        // setPeopleData(peeps)
+        // setFilmsData(films)
+        // setPlanetsData(plans)
+        // setSpeciesData(spe)
+        // setStarShipsData(star)
+        // setVehiclesData(vec)
+
+
+
+        const calling = async () => {
             const results = await Promise.all(arr);
-            // console.log(results);
-            
-            // filmsData = results[0]
-            // localStorage.setItem('filmsData', filmsData)
 
 
-            // setFilmsData(results[0].data.data.results)
-            const films = Data
-            // const films = results[0].data.data.results;
-            // console.log(films)8
+            const films = results[0].data.data.results;
+            const peeps = results[1].data.data.results;
 
-            const filmDataModify = films.map(item => (
+            const plans = results[2].data.data.results;
+            const spe = results[3].data.data.results;
+            const star = results[4].data.data.results;
+            const vec = results[5].data.data.results;
+
+
+            films.map(item => (
                 { ...item, show: false }
             ))
 
-            // console.log("modify" , filmDataModify)
 
+            peeps.map(item => (
+                { ...item, show: false }
+            ))
 
-            setPeopleData(results[1].data.data.results)
-            setPlanetsData(results[2].data.data.results)
-            setSpeciesData(results[3].data.data.results)
-            setStarShipsData(results[4].data.data.results)
-            setVehiclesData(results[5].data.data.results)
+            plans.map(item => (
+                { ...item, show: false }
+            ))
+
+            spe.map(item => (
+                { ...item, show: false }
+            ))
+
+            star.map(item => (
+                { ...item, show: false }
+            ))
+
+            vec.map(item => (
+                { ...item, show: false }
+            ))
+
+            setPeopleData(peeps)
+            setFilmsData(films)
+            setPlanetsData(plans)
+            setSpeciesData(spe)
+            setStarShipsData(star)
+            setVehiclesData(vec)
         }
         calling();
 
-        
-        
+
+
 
     }, [])
 
-    
-
-    
-
-    // const link = async text => {
-    //     console.log("fetching data...");
-    //     try{
-    //         const url = starWars+text;
-    //         const {data} = await axios.get(url)
-    //         const results = data.results
-    //         results ? setstarWarsData(results) : setstarWarsData([])
-    //         console.log(results)
-    //     }
-    //     catch(e){
-    //         console.log(e.response)
-    //     }
-
-    // }
 
 
 
-
-
-    return(
-        <AppContext.Provider value={{filmsData, peopleData, planetsData, starShipsData, vehiclesData, speciesData, filmGrid, gridSetter, tellPage, showSearch, showSearchFunction, showOptionMenu, showDots, showSideBar, showDetailSideBar, detail, closeDetailSideBar}}>
+    return (
+        <AppContext.Provider value={{ filmsData, peopleData, planetsData, starShipsData, vehiclesData, speciesData, filmGrid, gridSetter, tellPage, showSearch, showSearchFunction, showOptionMenu, showDots, showSideBar, showDetailSideBar, detail, closeDetailSideBar, deleteElement, deleteCautionTrigger, removeData, closeDialogBox, dataToDelete }}>
             {children}
         </AppContext.Provider>
     )
@@ -198,5 +429,5 @@ export const useGlobalContext = () => {
     return useContext(AppContext)
 }
 
-export {AppContext}
+export { AppContext }
 

@@ -1,25 +1,27 @@
 import React from 'react'
-import closeIcon from '../assets/close-icon.svg'
-import { useGlobalContext } from '../Context'
+import closeIcon from '../../assets/close-icon.svg'
+import { useGlobalContext } from '../../Context'
+import characterImage from '../../assets/home-character-image.png'
 
-export default function () {
+export default function DetailSideBar() {
 
-    const { detail, closeDetailSideBar } = useGlobalContext()
-
-    const { data , pageData, id } = detail
+    const { detail, closeDetailSideBar, filmsData } = useGlobalContext()
+    
+    const { id } = detail
+    // console.log("in side bar : " + pageData)
     // console.log("page data", pageData)
 
-    const obj = pageData.find((item) => {
-        // console.log(item)
+    const obj = filmsData.find((item) => {
+        console.log(item)
         return (
-            item.episode_id === id 
+            item.episode_id === id
         )
     })
 
-    console.log("obj",obj)
-    console.log("data",data[0])
+    // console.log("obj", obj)
+    // console.log("data", data[0])
 
-    console.log(obj[data[0]])
+    // console.log(obj[data[0]])
 
     // obj.data[0]
 
@@ -31,14 +33,14 @@ export default function () {
     return (
         <div className="detail-sidebar">
             <div className='detailSidebar-header'>
-                <span>Movie Details</span>
-                <button onClick={closeDetailSideBar}> <img className='' src={closeIcon} alt='close-icon' /> </button>
+                <span className=''>Movie Details</span>
+                <button onClick={closeDetailSideBar} className='close-button-sidebar'> <img className='' src={closeIcon} alt='close-icon' /> </button>
             </div>
 
             <div className='detailSidebar-data'>
-            <div className='detailSidebar-data-content'>
+                <div className='detailSidebar-data-content'>
                     <p className='heading'>Image</p>
-                    <img />
+                    <img src={characterImage} alt='character-image' className='detailSidebar-image'/>
                 </div>
                 <div className='detailSidebar-data-content'>
                     <p className='heading'>Title</p>
@@ -67,9 +69,9 @@ export default function () {
                 </div>
             </div>
 
-            {/* <div className='detailSidebar-button-container'>
-                <button className='detailSidebar-button'>Close</button>
-            </div> */}
+            <div className='detailSidebar-data-container button-container'>
+                <button onClick = {closeDetailSideBar} className='heading button'>Close</button>
+            </div>
 
         </div>
     )
