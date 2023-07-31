@@ -1,17 +1,21 @@
 import React, { useContext, useState, useEffect } from "react"
 import axios from "axios"
-import StData from "./StData"
-import SData from "./SData"
-import Data from './Data'
-import PeopleData from "./PeopleData"
-import VehiclesData from './VehiclesData'
-import PData from "./PData"
 
 const AppContext = React.createContext()
 
 
 
 export default function AppProvider({ children }) {
+
+    const [activeStyles, setActiveStyles] = React.useState({
+        films: false,
+        people: false,
+        planets: false,
+        species: false,
+        vehicles: false,
+        startships: false
+    })
+
 
     const [detail, setDetail] = React.useState({})
 
@@ -52,6 +56,8 @@ export default function AppProvider({ children }) {
             setFilmGrid(false)
         }
     }
+
+
 
 
     function deleteCautionTrigger(id, page, item) {
@@ -137,6 +143,71 @@ export default function AppProvider({ children }) {
     }
 
 
+    function changeActiveStyles(page){
+
+  
+
+        if (page === 'films') {
+            setActiveStyles({films: true,
+                people: false,
+                planets: false,
+                species: false,
+                vehicles: false,
+                startships: false})
+        }
+
+        else if (page === 'people') {
+            setActiveStyles({films: false,
+                people: true,
+                planets: false,
+                species: false,
+                vehicles: false,
+                startships: false})
+
+
+        }
+        else if (page === 'planets') {
+            setActiveStyles({films: false,
+                people: false,
+                planets: true,
+                species: false,
+                vehicles: false,
+                startships: false})
+
+
+        }
+        else if (page === 'species') {
+            setActiveStyles({films: false,
+                people: false,
+                planets: false,
+                species: true,
+                vehicles: false,
+                startships: false})
+
+
+        }
+        else if (page === 'starships') {
+            setActiveStyles({films: false,
+                people: false,
+                planets: false,
+                species: false,
+                vehicles: false,
+                startships: true})
+
+
+        }
+        else if (page === 'vehicles') {
+            setActiveStyles({films: false,
+                people: false,
+                planets: false,
+                species: false,
+                vehicles: true,
+                startships: false})
+
+            
+        }
+    }
+
 
     // Tells which page are we on
     function tellPage(page) {
@@ -150,6 +221,13 @@ export default function AppProvider({ children }) {
             startshipsPage: false
         })
 
+        setActiveStyles({films: false,
+            people: false,
+            planets: false,
+            species: false,
+            vehicles: false,
+            startships: false})
+
         if (page === 'home')
             return;
 
@@ -157,6 +235,7 @@ export default function AppProvider({ children }) {
             setFilmGrid(true)
             return
         }
+
         // return;
         else {
             setFilmGrid(true)
@@ -418,7 +497,7 @@ export default function AppProvider({ children }) {
 
 
     return (
-        <AppContext.Provider value={{ filmsData, peopleData, planetsData, starShipsData, vehiclesData, speciesData, filmGrid, gridSetter, tellPage, showSearch, showSearchFunction, showOptionMenu, showDots, showSideBar, showDetailSideBar, detail, closeDetailSideBar, deleteElement, deleteCautionTrigger, removeData, closeDialogBox, dataToDelete }}>
+        <AppContext.Provider value={{ filmsData, peopleData, planetsData, starShipsData, vehiclesData, speciesData, filmGrid, gridSetter, tellPage, showSearch, showSearchFunction, showOptionMenu, showDots, showSideBar, showDetailSideBar, detail, closeDetailSideBar, deleteElement, deleteCautionTrigger, removeData, closeDialogBox, dataToDelete, changeActiveStyles, activeStyles }}>
             {children}
         </AppContext.Provider>
     )

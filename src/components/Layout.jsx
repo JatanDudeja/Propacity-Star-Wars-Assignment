@@ -10,10 +10,19 @@ import CautionDialogBox from './CautionDialogBox'
 export default function Layout(){
     const { showSearch, showSideBar, deleteElement } = useGlobalContext()
     return(
-        <div>
+        <div className='main-container'>
+            <div className='item1'>
             <Header />
+
+            </div>
+            <div className='item2'>
             <Sidebar />
-            <Outlet />
+
+            </div>
+            <div className='item3'>
+                <Outlet />
+
+            </div>
             <div>
                 {deleteElement && <CautionDialogBox />}
 

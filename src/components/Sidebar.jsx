@@ -9,33 +9,41 @@ import Vehicles from "../pages/Vehicles"
 import { useGlobalContext } from "../Context"
 
 export default function Sidebar() {
-    const { test,link } = useGlobalContext()
+    const { test,link, tellPage, changeActiveStyles, activeStyles } = useGlobalContext()
     return (
         <div className="sidebar-container">
             <nav className="sidebar-nav">
                 <NavLink
                     to="/films"
-                    
-                // style={({ isActive }) => isActive ? activeStyles : null}
+                    onClick={() => changeActiveStyles('films')}
                 >
                     <Films />
                 </NavLink>
+
                 <NavLink
                     to="/people"
-                // style={({ isActive }) => isActive ? activeStyles : null}
+                    onClick={() => changeActiveStyles('people')}
                 >
                     <People />
                 </NavLink>
+
                 <NavLink
                     to="/planets"
-                // style={({ isActive }) => isActive ? activeStyles : null}
+                    onClick={() => changeActiveStyles('planets')}
                 >
                     <Planets />
                 </NavLink>
 
-                <NavLink to='/species' > <Species /> </NavLink>
-                <NavLink to='/starships' > <StarShips /> </NavLink>
-                <NavLink to='/vehicles' > <Vehicles /> </NavLink>
+                <NavLink to='/species' onClick={() => changeActiveStyles('species')}> <Species /> </NavLink>
+
+                <NavLink to='/starships'
+                    onClick={() => changeActiveStyles('starships')}
+                > <StarShips /> </NavLink>
+
+                <NavLink to='/vehicles'
+                    onClick={() => changeActiveStyles('vehicles')}
+                
+                > <Vehicles /> </NavLink>
             </nav>
         </div>
     )
